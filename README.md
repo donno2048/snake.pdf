@@ -1,4 +1,4 @@
-# snake-pdf
+# snake.pdf
 
 Run snake in a pdf.
 
