@@ -1,0 +1,126 @@
+%PDF-1.0
+
+1 0 obj
+<<
+    /AcroForm <<
+        /Fields [3 0 R 2 0 R]
+    >>
+    /Pages 1 0 R
+    /Kids [1 0 R]
+    /Count 1
+    /Type /Page
+    /MediaBox [0 0 500 500]
+    /Annots [2 0 R 3 0 R]
+    /OpenAction <<
+        /S /JavaScript
+        /JS (
+const WIDTH = 89;
+const HEIGHT = 44;
+const SNAKE_CHAR = "a";
+const WALL_CHAR = "#";
+const FOOD_CHAR = "b";
+const EMPTY_CHAR = "_";
+const SPEED = 1;
+
+let snake;
+var last_move;
+
+function set_pos(position, char) {
+    this.getField("output").value = this.getField("output").value.slice(0, position) + char + this.getField("output").value.slice(position + 1, this.getField("output").value.length);
+}
+
+function get_pos(position) {
+    return this.getField("output").value.charAt(position);
+}
+
+function place_food() {
+    let height, width, food_pos;
+    do {
+        height = 1 + Math.floor(Math.random() * (HEIGHT - 2));
+        width = 1 + Math.floor(Math.random() * (WIDTH - 2));
+        food_pos = height * WIDTH + width;
+    } while(get_pos(food_pos) == SNAKE_CHAR);
+    set_pos(food_pos, FOOD_CHAR);
+}
+
+function init() {
+    this.getField("output").value = WALL_CHAR.repeat(WIDTH) + (WALL_CHAR + EMPTY_CHAR.repeat(WIDTH - 2) + WALL_CHAR).repeat(HEIGHT - 2) + WALL_CHAR.repeat(WIDTH);
+    snake = [Math.floor(WIDTH / 2) + Math.floor(HEIGHT / 2) * WIDTH];
+    set_pos(snake.at(0), SNAKE_CHAR);
+    last_move = null;
+    place_food();
+}
+
+function loop() {
+    if (last_move != null) {
+        const new_pos = snake.at(0) + last_move;
+        snake.unshift(new_pos);
+        switch (get_pos(new_pos)) {
+            case WALL_CHAR:
+            case SNAKE_CHAR:
+                init();
+                break;
+            case EMPTY_CHAR:
+                set_pos(snake.pop(), EMPTY_CHAR);
+                set_pos(new_pos, SNAKE_CHAR);
+                break;
+            case FOOD_CHAR:
+                place_food();
+                set_pos(new_pos, SNAKE_CHAR);
+                break;
+        }
+    }
+}
+
+init();
+app.setInterval("loop()", 100 / SPEED);
+
+const char_move = {
+    "w": -WIDTH,
+    "a": -1,
+    "s": WIDTH,
+    "d": 1,
+};
+
+function update(e) {
+    if (e.change) last_move = char_move[e.change.toLowerCase()] || last_move;
+    app.setTimeOut("this.getField('input').value = ''", 0);
+}
+        )
+    >>
+>>
+endobj
+
+2 0 obj
+<<
+    /DA (/Ariel 1 Tf 1 1 1 rg)
+    /FT /Tx
+    /P 1 0 R
+    /Rect [0 0 500 500]
+    /Subtype /Widget
+    /T (input)
+    /AA <<
+        /K <<
+            /JS (update(event))
+            /S /JavaScript
+        >>
+    >>
+>>
+endobj
+
+3 0 obj
+<<
+    /DA (/Ariel 10 Tf)
+    /FT /Tx
+    /P 1 0 R
+    /Rect [0 0 500 500]
+    /Subtype /Widget
+    /T (output)
+    /Ff 4097
+>>
+endobj
+
+trailer
+<<
+    /Root 1 0 R
+>>
