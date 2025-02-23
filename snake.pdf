@@ -6,11 +6,8 @@
         /Fields [3 0 R 2 0 R]
     >>
     /Pages 1 0 R
-    /Kids [1 0 R]
+    /Kids [5 0 R]
     /Count 1
-    /Type /Page
-    /MediaBox [0 0 500 500]
-    /Annots [2 0 R 3 0 R]
     /OpenAction <<
         /S /JavaScript
         /JS (
@@ -73,7 +70,7 @@ function loop() {
 }
 
 init();
-app.setInterval("loop()", 100 / SPEED);
+var interval = app.setInterval("loop()", 100 / SPEED); // "var" - no garbage collection
 
 const char_move = {
     "w": -WIDTH,
@@ -95,7 +92,7 @@ endobj
 <<
     /DA (/Ariel 1 Tf 1 1 1 rg)
     /FT /Tx
-    /P 1 0 R
+    /P 5 0 R
     /Rect [0 0 500 500]
     /Subtype /Widget
     /T (input)
@@ -112,11 +109,18 @@ endobj
 <<
     /DA (/Ariel 10 Tf)
     /FT /Tx
-    /P 1 0 R
+    /P 5 0 R
     /Rect [0 0 500 500]
     /Subtype /Widget
     /T (output)
     /Ff 4097
+>>
+endobj
+
+5 0 obj
+<<
+    /Annots [3 0 R 2 0 R]
+    /MediaBox [0 0 500 500]
 >>
 endobj
 
