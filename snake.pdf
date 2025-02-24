@@ -3,13 +3,12 @@
 1 0 obj
 <<
     /AcroForm <<
-        /Fields [2 0 R 3 0 R 4 0 R]
+        /Fields [3 0 R 4 0 R 2 0 R]
     >>
-    /Pages 1 0 R
-    /Kids [<<
-        /Annots [3 0 R 4 0 R 2 0 R]
-        /MediaBox [0 0 500 500]
-    >>]
+    /Pages <<
+        /Kids [5 0 R]
+        /Count 1
+    >>
     /OpenAction <<
         /S /JavaScript
         /JS (
@@ -96,6 +95,7 @@ endobj
 <<
     /DA (/Ariel 1 Tf 1 1 1 rg)
     /FT /Tx
+    /P 5 0 R
     /Rect [0 0 500 500]
     /Subtype /Widget
     /T (input)
@@ -112,6 +112,7 @@ endobj
 <<
     /DA (/Ariel 10 Tf)
     /FT /Tx
+    /P 5 0 R
     /Rect [0 0 502 500]
     /Subtype /Widget
     /T (output)
@@ -121,16 +122,21 @@ endobj
 
 4 0 obj
 <<
-    /DA (/Ariel 20 Tf 1 1 1 rg)
+    /DA (/Ariel 20 Tf 1 0 0 rg)
     /FT /Tx
+    /P 5 0 R
     /Rect [150 350 350 450]
-    /MK <<
-        /BG [0 0 0 rg]
-    >>
-    /Subtype /Widget
     /T (message)
     /V (Press on the page to focus and then use the WASD keys to move the snake.)
+    /Subtype /Widget
     /Ff 4097
+>>
+endobj
+
+5 0 obj
+<<
+    /Annots [3 0 R 4 0 R 2 0 R]
+    /MediaBox [0 0 500 500]
 >>
 endobj
 
