@@ -24,7 +24,7 @@ let snake;
 var last_move;
 
 function set_pos(position, char) {
-    this.getField("output").value = this.getField("output").value.slice(0, position) + char + this.getField("output").value.slice(position + 1, this.getField("output").value.length);
+    this.getField("output").value = this.getField("output").value.slice(0, position) + char + this.getField("output").value.slice(position + 1);
 }
 
 function get_pos(position) {
@@ -51,6 +51,7 @@ function init() {
 }
 
 function loop() {
+      this.getField('input').value = '';
     if (last_move != null) {
         const new_pos = snake.at(0) + last_move;
         snake.unshift(new_pos);
@@ -83,7 +84,6 @@ const char_move = {
 
 function update(e) {
     if (e.change) last_move = char_move[e.change.toLowerCase()] || last_move;
-    app.setTimeOut("this.getField('input').value = ''", 0);
     this.getField("message").hidden = true;
 }
         )
